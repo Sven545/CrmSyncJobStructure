@@ -10,12 +10,21 @@ namespace CRMSyncJobStructure.Services
     public class CrmSyncService:ISyncService
     {
         public ISyncProvider Provider { get; set; }
-        public CrmSyncService(ISyncProvider provider)// Выбор конкретного провайдера для синхронизации сделан ранее
+        public ISyncManager Manager { get ; set; }
+
+        /// <summary>
+        /// Выбор конкретного провайдера и менеджера сделан ранее, также выбран конкретный сервис авторизации для конкретного провайдера
+        /// Используем абстрактную фабрику для формирования связанных объектов
+        /// </summary>    
+        public CrmSyncService(ISyncProvider provider,ISyncManager manager)
         {
             Provider = provider;
+            Manager = manager;
+            Provider.SyncObjects= Manager.GetSyncObjects();
+            
         }
 
-        public void SyncRoomAsync()
+        public void Synchronize()
         {
             Provider.DoSyncObjects();
         }

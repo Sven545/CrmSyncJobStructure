@@ -7,6 +7,7 @@ using CRMSyncJobStructure.SyncObjects;
 using CRMSyncJobStructure.YClientsServices;
 using CRMSyncJobStructure.YClientsEntities;
 using System.Linq;
+using CRMSyncJobStructure.ServiceFactories;
 
 namespace CRMSyncJobStructure
 {
@@ -16,9 +17,11 @@ namespace CRMSyncJobStructure
         private static UserYClients user;
         static void Main(string[] args)
         {
-            //SyncJob job = new SyncJob(new CrmSyncService(new YClientsProvider()));
-            //job.SyncService.Provider.AddSyncObject(new CalendarYClienstSyncObject());
-            // job.RunAsync();
+
+            ISyncServiceAbstractFactory yClientsFactory = new ServiceYClientsFactory();
+            var service = yClientsFactory.GetSyncService();
+            SyncJob job=new SyncJob(service);
+
             AuthorizationYClientsService authService = new AuthorizationYClientsService(partnerToken);
             try
             {
@@ -49,7 +52,7 @@ namespace CRMSyncJobStructure
                 var datetime = resRecord.DateTime.AddHours(1);
                 resRecord1.DateTime = datetime;
                 var resRecord2 = recordsService.ChangeRecord(resRecord1);
-                recordsService.RemoveRecord(resRecord.CompanyId,(int) resRecord.Id);
+                recordsService.RemoveRecord(resRecord.CompanyId, (int)resRecord.Id);
             }
             catch (Exception ex)
             {

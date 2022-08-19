@@ -7,7 +7,7 @@ using CRMSyncJobStructure.Interfaces;
 
 namespace CRMSyncJobStructure.SyncObjects
 {
-    public class Equipment : ISyncObject
+    public class EquipmentYClienstSyncObject : ISyncObject
     {
         public void DoSynchronization()
         {

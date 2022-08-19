@@ -11,8 +11,9 @@ namespace CRMSyncJobStructure.Interfaces
     /// </summary>
     public interface ISyncProvider
     {
-        public IList<ISyncObject> SyncObjects { get; set; }
-       
+        public ISyncAuthService AuthService { get; set; }
+        public IEnumerable<ISyncObject> SyncObjects { get; set; }
+
         public void AddSyncObject(ISyncObject syncObject);
         public void RemoveSyncObject(ISyncObject syncObject);
         public void DoSyncObjects();

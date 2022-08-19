@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CRMSyncJobStructure.SyncModels
+namespace CRMSyncJobStructure.Interfaces
 {
-    public class SyncData
+    public interface ISyncAuthService
     {
-        public Guid Id { get; set; }
-
+        public void Authorize();
+        
     }
 }

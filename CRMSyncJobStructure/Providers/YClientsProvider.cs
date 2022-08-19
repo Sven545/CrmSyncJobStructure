@@ -10,35 +10,39 @@ namespace CRMSyncJobStructure.Providers
 {
     public class YClientsProvider : ISyncProvider
     {
-        public string PartnerToken { get; set; }
-        public string UserToken { get; set; }
+        
 
-        public IList<ISyncObject> SyncObjects { get; set ; }
-        public YClientsProvider(IList<ISyncObject> syncEntitties = null)
+        /// <summary>
+        /// Список объектов синхронизации формируем на уровне сервиса
+        /// </summary>
+        public IEnumerable<ISyncObject> SyncObjects { get; set ; }
+
+        /// <summary>
+        /// Сервис авторизации
+        /// </summary>
+        public ISyncAuthService AuthService { get ; set ; }
+
+        /// <summary>
+        /// Сервис авторизации выбираем ранее. Возможно на уровне сервиса, либо на уровне клиента с помощью абстрактной фабрики
+        /// </summary>        
+        public YClientsProvider(ISyncAuthService authService)
         {
-            if (syncEntitties == null)
-            {
-                SyncObjects = new List<ISyncObject>();
-            }
-            else
-            {
-                SyncObjects = syncEntitties;
-            }
 
+            AuthService = authService;
             //авторизация. Скорее всего будет вынесена в отдельное API MB
-            AuthorizationYClientsService authService = new AuthorizationYClientsService("f3fyrwtb4npu9wrt53nx");
-            var authRes = authService.Authorize(userLogin: "", userPassword: "");
+           // AuthorizationYClientsService authService = new AuthorizationYClientsService("f3fyrwtb4npu9wrt53nx");
+            //var authRes = authService.Authorize(userLogin: "", userPassword: "");
             //сохраняем для последующего использования partnerToken
         }
 
         public void AddSyncObject(ISyncObject syncObject)
         {
-            SyncObjects.Add(syncObject);
+            //SyncObjects.Add(syncObject);
         }
 
         public void RemoveSyncObject(ISyncObject syncObject)
         {
-            SyncObjects.Remove(syncObject);
+           // SyncObjects.Remove(syncObject);
         }
 
         public void DoSyncObjects()

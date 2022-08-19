@@ -11,7 +11,8 @@ namespace CRMSyncJobStructure.Interfaces
     /// </summary>
     public interface ISyncService
     {
+        public ISyncManager Manager { get; set; }
         public ISyncProvider Provider { get; set; }
-        public void SyncRoomAsync();
+        public void Synchronize();
     }
 }
