@@ -12,14 +12,14 @@ namespace CRMSyncJobStructure.YClientsServices
     /// <summary>
     /// Сервис для работы с сущностью "Запись" YClients API
     /// </summary>
-    public class RecordYClientsService
+    public class RecordYClientsServiceApi
     {
-        public string PartnerToken { get; set; }
-        public string UserToken { get; set; }
-        public RecordYClientsService(string partnerToken, string userToken)
+        private readonly string _partnerToken;
+        private readonly string _userToken;
+        public RecordYClientsServiceApi(string partnerToken, string userToken)
         {
-            PartnerToken = partnerToken;
-            UserToken = userToken;
+            _partnerToken = partnerToken;
+            _userToken = userToken;
         }
 
         public RecordYClients AddRecord(RecordYClients record)
@@ -29,7 +29,7 @@ namespace CRMSyncJobStructure.YClientsServices
                 var url = $"https://api.yclients.com/api/v1/records/{record.CompanyId}";
 
                 using WebClient client = new WebClient();
-                client.Headers[HttpRequestHeader.Authorization] = $"Bearer {PartnerToken}, User {UserToken}";
+                client.Headers[HttpRequestHeader.Authorization] = $"Bearer {_partnerToken}, User {_userToken}";
                 client.Headers[HttpRequestHeader.Accept] = "application/vnd.yclients.v2+json";
                 client.Headers[HttpRequestHeader.ContentType] = "application/json";
                 var args = new
@@ -62,14 +62,14 @@ namespace CRMSyncJobStructure.YClientsServices
 
         public RecordYClients ChangeRecord(RecordYClients record)
         {
-          
+
 
             try
             {
                 var url = $"https://api.yclients.com/api/v1/record/{record.CompanyId}/{record.Id}";
 
                 using WebClient client = new WebClient();
-                client.Headers[HttpRequestHeader.Authorization] = $"Bearer {PartnerToken}, User {UserToken}";
+                client.Headers[HttpRequestHeader.Authorization] = $"Bearer {_partnerToken}, User {_userToken}";
                 client.Headers[HttpRequestHeader.Accept] = "application/vnd.yclients.v2+json";
                 client.Headers[HttpRequestHeader.ContentType] = "application/json";
                 var args = new
@@ -82,7 +82,7 @@ namespace CRMSyncJobStructure.YClientsServices
                     comment = "testC Comment",
                 };
                 string jsonString = JsonSerializer.Serialize(args);
-                string result = client.UploadString(new Uri(url),WebRequestMethods.Http.Put, jsonString);
+                string result = client.UploadString(new Uri(url), WebRequestMethods.Http.Put, jsonString);
 
                 JsonSerializerOptions options = new JsonSerializerOptions()
                 {
@@ -104,7 +104,7 @@ namespace CRMSyncJobStructure.YClientsServices
 
             var url = $"https://api.yclients.com/api/v1/record/{companyId}/{recordId}";
             using WebClient client = new WebClient();
-            client.Headers[HttpRequestHeader.Authorization] = $"Bearer {PartnerToken}, User {UserToken}";
+            client.Headers[HttpRequestHeader.Authorization] = $"Bearer {_partnerToken}, User {_userToken}";
             client.Headers[HttpRequestHeader.Accept] = "application/vnd.yclients.v2+json";
             client.Headers[HttpRequestHeader.ContentType] = "application/json";
             string result = client.DownloadString(url);
@@ -122,7 +122,7 @@ namespace CRMSyncJobStructure.YClientsServices
             var url = $"https://api.yclients.com/api/v1/records/{companyId}";
 
             using WebClient client = new WebClient();
-            client.Headers[HttpRequestHeader.Authorization] = $"Bearer {PartnerToken}, User {UserToken}";
+            client.Headers[HttpRequestHeader.Authorization] = $"Bearer {_partnerToken}, User {_userToken}";
             client.Headers[HttpRequestHeader.Accept] = "application/vnd.yclients.v2+json";
             client.Headers[HttpRequestHeader.ContentType] = "application/json";
             string result = client.DownloadString(url);
@@ -135,22 +135,22 @@ namespace CRMSyncJobStructure.YClientsServices
             return response.Data;
         }
 
-        public void RemoveRecord(int companyId,int recordId)
+        public void RemoveRecord(int companyId, int recordId)
         {
             try
             {
                 var url = $"https://api.yclients.com/api/v1/record/{companyId}/{recordId}";
 
                 using WebClient client = new WebClient();
-                client.Headers[HttpRequestHeader.Authorization] = $"Bearer {PartnerToken}, User {UserToken}";
+                client.Headers[HttpRequestHeader.Authorization] = $"Bearer {_partnerToken}, User {_userToken}";
                 client.Headers[HttpRequestHeader.Accept] = "application/vnd.yclients.v2+json";
                 client.Headers[HttpRequestHeader.ContentType] = "application/json";
-               
-               
-                string result = client.UploadString(new Uri(url), "DELETE","");
 
-               
-               
+
+                string result = client.UploadString(new Uri(url), "DELETE", "");
+
+
+
             }
             catch (WebException ex)
             {

@@ -8,6 +8,8 @@ using CRMSyncJobStructure.YClientsServices;
 using CRMSyncJobStructure.YClientsEntities;
 using System.Linq;
 using CRMSyncJobStructure.ServiceFactories;
+using CRMSyncJobStructure.SyncModels;
+using System.Collections.Generic;
 
 namespace CRMSyncJobStructure
 {
@@ -18,11 +20,13 @@ namespace CRMSyncJobStructure
         static void Main(string[] args)
         {
 
-            ISyncServiceAbstractFactory yClientsFactory = new ServiceYClientsFactory();
-            var service = yClientsFactory.GetSyncService();
-            SyncJob job=new SyncJob(service);
+            ISyncServiceAbstractFactory yClientsFactory = new SyncServiceYClientsFactory();
+            var service = yClientsFactory.GetSyncService(new List<SyncObjectsEnum>());
+            SyncJob job = new SyncJob(service);
 
-            AuthorizationYClientsService authService = new AuthorizationYClientsService(partnerToken);
+            job.RunAsync();
+
+            AuthorizationYClientsServiceApi authService = new AuthorizationYClientsServiceApi(partnerToken);
             try
             {
                 user = authService.Authorize("79671787704", "qwerty123");
@@ -33,7 +37,7 @@ namespace CRMSyncJobStructure
                 Console.WriteLine(ex.Message);
 
             }
-            RecordYClientsService recordsService = new RecordYClientsService(partnerToken, user.Token);
+            RecordYClientsServiceApi recordsService = new RecordYClientsServiceApi(partnerToken, user.Token);
             //var records = recordsService.GetRecords(668467);
             //var firstRecord = recordsService.GetOneRecord(668467, (int)records.FirstOrDefault().Id);
             RecordYClients newRecord = new RecordYClients()
@@ -59,6 +63,28 @@ namespace CRMSyncJobStructure
                 Console.WriteLine(ex.Message);
             }
 
+        }
+    }
+    /// <summary>
+    /// Пример работы с сервисами синхронизации из контроллера
+    /// </summary>
+    public class SyncController
+    {
+        public void Sync(object someSyncParameters)
+        {
+            //На основе параметров, по которым хотим синхронизироваться
+            //полученных от клиента применяем тот или иной сервис синхронизации
+            //так например можно передавать систему, с которой надо засинхрониться {"system":"yClients"}
+            //На основе чего создаем конкретную фабрику
+            //Здесь же мы должны распарсить настройки синхронизации и передать их в фабрику{"calendar":"true","room":"false" и т.д}
+
+            //Где то здесь мы должны получить:
+            // -параметры для авторизации конкретного пользователя
+            // -список объектов, которые нужно синхронизировать(записываем в базу для робота и используем здесь)
+            var yClientsFactory = new SyncServiceYClientsFactory();
+            var service = yClientsFactory.GetSyncService(new List<SyncObjectsEnum>());
+            service.Authorize();
+            service.Synchronize();
         }
     }
 }

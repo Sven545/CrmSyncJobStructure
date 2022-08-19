@@ -16,11 +16,11 @@ namespace CRMSyncJobStructure.AuthServices
     {
         private readonly string _userLogin;
         private readonly string _userPassword;
-        private AuthorizationYClientsService _authApiYClientsService;
+        private AuthorizationYClientsServiceApi _authApiYClientsService;
         private object dataBase;
-        public YClientsAuthService(string partnerToken,string userLogin,string password)
+        public YClientsAuthService(string partnerToken, string userLogin, string password)
         {
-            _authApiYClientsService = new AuthorizationYClientsService(partnerToken);
+            _authApiYClientsService = new AuthorizationYClientsServiceApi(partnerToken);
             _userLogin = userLogin;
             _userPassword = password;
         }
@@ -28,8 +28,9 @@ namespace CRMSyncJobStructure.AuthServices
         {
             //Пробуем получить из БД userToken
             //если нет, пробуем авторизоваться с логином и паролем
-            _authApiYClientsService.Authorize(_userLogin, _userPassword);
-            throw new NotImplementedException();
+            var authResult = _authApiYClientsService.Authorize(_userLogin, _userPassword);
+            //Если все ок-сохраняем userToken в БД
+           
         }
     }
 }

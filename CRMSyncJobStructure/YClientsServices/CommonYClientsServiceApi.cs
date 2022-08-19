@@ -10,21 +10,21 @@ namespace CRMSyncJobStructure.YClientsServices
     /// <summary>
     /// Общий сервис доступа к сущностям YClients
     /// </summary>
-    public class CommonYClientsService
+    public class CommonYClientsServiceApi
     {
         public UserYClients User { get; set; }
 
-        public AuthorizationYClientsService AuthorizationService { get; set; }
-        public RecordYClientsService Records { get; set; }
-        public StaffYClientsService Staffs { get; set; }
+        public AuthorizationYClientsServiceApi AuthorizationService { get; set; }
+        public RecordYClientsServiceApi Records { get; set; }
+        public StaffYClientsServiceApi Staffs { get; set; }
 
-        public CommonYClientsService(string userLogin, string userPassword, string partnerToken)
+        public CommonYClientsServiceApi(string userLogin, string userPassword, string partnerToken)
         {
             //partnetToken можно получать прямо здесь из конфига
             AuthorizationService.Authorize(userLogin, userPassword);
 
-            Records = new RecordYClientsService(partnerToken, User.Token);
-            Staffs = new StaffYClientsService(partnerToken, User.Token);
+            Records = new RecordYClientsServiceApi(partnerToken, User.Token);
+            Staffs = new StaffYClientsServiceApi(partnerToken, User.Token);
         }
 
     }

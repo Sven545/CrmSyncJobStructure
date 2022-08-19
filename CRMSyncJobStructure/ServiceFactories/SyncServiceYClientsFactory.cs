@@ -12,14 +12,19 @@ using CRMSyncJobStructure.Services;
 
 namespace CRMSyncJobStructure.ServiceFactories
 {
-    public class ServiceYClientsFactory : ISyncServiceAbstractFactory
+    public class SyncServiceYClientsFactory : ISyncServiceAbstractFactory
     {
-        public ISyncService GetSyncService()
+        //private IEnumerable<SyncObjectsEnum> SyncObjects { get; }
+        public SyncServiceYClientsFactory()
         {
-            var authService = new YClientsAuthService();
+            //SyncObjects = syncObjects;
+        }
+        public ISyncService GetSyncService(IEnumerable<SyncObjectsEnum> objectsForSync)
+        {
+            var authService = new YClientsAuthService("", "", "");//данные для авторизации
             var provider = new YClientsProvider(authService);
-            var manager = new YClientsSyncManager(new List<SyncObjectsEnum>());
-            var service = new CrmSyncService(provider, manager);
+            var manager = new YClientsSyncManager();
+            var service = new CrmSyncService(provider, manager, objectsForSync);
             return service;
         }
     }

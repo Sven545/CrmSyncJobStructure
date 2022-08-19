@@ -13,14 +13,14 @@ namespace CRMSyncJobStructure.Providers
         
 
         /// <summary>
-        /// Список объектов синхронизации формируем на уровне сервиса
+        /// Список объектов синхронизации формируем на уровне клиента
         /// </summary>
         public IEnumerable<ISyncObject> SyncObjects { get; set ; }
 
         /// <summary>
         /// Сервис авторизации
         /// </summary>
-        public ISyncAuthService AuthService { get ; set ; }
+        public ISyncAuthService AuthService { get ; }
 
         /// <summary>
         /// Сервис авторизации выбираем ранее. Возможно на уровне сервиса, либо на уровне клиента с помощью абстрактной фабрики
@@ -34,7 +34,7 @@ namespace CRMSyncJobStructure.Providers
             //var authRes = authService.Authorize(userLogin: "", userPassword: "");
             //сохраняем для последующего использования partnerToken
         }
-
+        /*
         public void AddSyncObject(ISyncObject syncObject)
         {
             //SyncObjects.Add(syncObject);
@@ -44,7 +44,7 @@ namespace CRMSyncJobStructure.Providers
         {
            // SyncObjects.Remove(syncObject);
         }
-
+        */
         public void DoSyncObjects()
         {
             foreach (var syncEntity in SyncObjects)
@@ -53,6 +53,9 @@ namespace CRMSyncJobStructure.Providers
             }
         }
 
-
+        public void Authorize()
+        {
+            AuthService.Authorize();
+        }
     }
 }

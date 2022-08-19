@@ -14,5 +14,6 @@ namespace CRMSyncJobStructure.Interfaces
         public ISyncManager Manager { get; set; }
         public ISyncProvider Provider { get; set; }
         public void Synchronize();
+        public void Authorize();
     }
 }

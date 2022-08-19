@@ -13,8 +13,8 @@ namespace CRMSyncJobStructure.Interfaces
     public interface ISyncManager
     {
         /// <summary>
-        /// Возвращает объекты синхронизации на основании каких то входных данных
+        /// На уровне сервиса формируем список объектов для синхронизации(комната, календарь, оборудование)
         /// </summary>   
-        public IEnumerable<ISyncObject> GetSyncObjects();
+        public IEnumerable<ISyncObject> GetSyncObjects(IEnumerable<SyncObjectsEnum> objectsForSync);
     }
 }

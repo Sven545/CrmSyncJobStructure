@@ -19,14 +19,15 @@ namespace CRMSyncJobStructure.SyncManagers
         /// В конструкторе передаем объект, на основании которого будет сформирован список объектов синхронизации
         /// Возможно при болле глубокой логике синхронизации заменим на отдельный класс с параметрами
         /// </summary>       
-        public YClientsSyncManager(IEnumerable<SyncObjectsEnum> objectsForSync)
+        public YClientsSyncManager()
         {
-            ObjectsForSync = objectsForSync;
+           // ObjectsForSync = objectsForSync;
         }
         /// <summary>
         /// Логика выбора объектов синхронизации
+        /// Если передавать сюда объект с боллее подробной 
         /// </summary>        
-        public IEnumerable<ISyncObject> GetSyncObjects()
+        public IEnumerable<ISyncObject> GetSyncObjects(IEnumerable<SyncObjectsEnum> objectsForSync)
         {
 
             List<ISyncObject> syncObjects = new List<ISyncObject>();

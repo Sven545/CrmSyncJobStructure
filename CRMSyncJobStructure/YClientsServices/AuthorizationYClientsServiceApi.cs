@@ -9,10 +9,10 @@ using CRMSyncJobStructure.YClientsEntities;
 
 namespace CRMSyncJobStructure.YClientsServices
 {
-    public class AuthorizationYClientsService
+    public class AuthorizationYClientsServiceApi
     {
         public string PartnerToken { get; set; } 
-        public AuthorizationYClientsService(string partnerToken)
+        public AuthorizationYClientsServiceApi(string partnerToken)
         {
             PartnerToken = partnerToken;
         }
