@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CRMSyncJobStructure.SyncModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,5 +16,7 @@ namespace CRMSyncJobStructure.Interfaces
         public ISyncProvider Provider { get; set; }
         public void Synchronize();
         public void Authorize();
+        public GroupsEntitiesRelation GetEntitiesRelations();
+
     }
 }

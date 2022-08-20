@@ -4,12 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CRMSyncJobStructure.YClientsEntities
+namespace CRMSyncJobStructure.SyncModels
 {
-    public class BaseResponseYClients
+    public enum CrmSystems
     {
-        public bool Success { get; set; }
-
-
+        YClients,
+        AppEvents
     }
 }

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CRMSyncJobStructure.YClientsServices
+namespace CRMSyncJobStructure.YClientsApiServices
 {
     public class StaffYClientsServiceApi
     {

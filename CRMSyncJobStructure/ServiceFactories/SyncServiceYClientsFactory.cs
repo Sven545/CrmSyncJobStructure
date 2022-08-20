@@ -8,7 +8,8 @@ using CRMSyncJobStructure.AuthServices;
 using CRMSyncJobStructure.Providers;
 using CRMSyncJobStructure.SyncManagers;
 using CRMSyncJobStructure.SyncModels;
-using CRMSyncJobStructure.Services;
+using CRMSyncJobStructure.SyncServices;
+using CRMSyncJobStructure.EntitiesRelationServices;
 
 namespace CRMSyncJobStructure.ServiceFactories
 {
@@ -22,7 +23,8 @@ namespace CRMSyncJobStructure.ServiceFactories
         public ISyncService GetSyncService(IEnumerable<SyncObjectsEnum> objectsForSync)
         {
             var authService = new YClientsAuthService("", "", "");//данные для авторизации
-            var provider = new YClientsProvider(authService);
+            var entitiesRelationService = new YClientsEntitiesRelationService();
+            var provider = new YClientsProvider(authService,entitiesRelationService);
             var manager = new YClientsSyncManager();
             var service = new CrmSyncService(provider, manager, objectsForSync);
             return service;

@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CRMSyncJobStructure.Services
+namespace CRMSyncJobStructure.SyncServices
 {
     public class CrmSyncService : ISyncService
     {
@@ -35,6 +35,11 @@ namespace CRMSyncJobStructure.Services
         public void Authorize()
         {
             Provider.Authorize();
+        }
+
+        public GroupsEntitiesRelation GetEntitiesRelations()
+        {
+            return Provider.GetEntitiesRelations();
         }
     }
 }

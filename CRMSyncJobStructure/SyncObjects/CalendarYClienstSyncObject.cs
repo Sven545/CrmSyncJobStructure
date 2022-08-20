@@ -4,12 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using CRMSyncJobStructure.Interfaces;
-using CRMSyncJobStructure.YClientsServices;
+using CRMSyncJobStructure.YClientsApiServices;
 
 namespace CRMSyncJobStructure.SyncObjects
 {
     /// <summary>
-    /// Объект синхронизации "Календарь", которые знает конкретный способ и правила синхронизации
+    /// Объект синхронизации "Календарь", которые знает конкретный способ и правила синхронизации(all_in,all_out,double, любое другое правило)
     /// </summary>
     public class CalendarYClienstSyncObject : ISyncObject
     {

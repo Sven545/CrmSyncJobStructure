@@ -1,0 +1,107 @@
+//Примерная структура запроса от клиента для настройки синхронизации с конкретной crm. Для составления этого запроса клиент должен заранее получить структуру сущностей на стороне crm и структуру сущностей у нас
+
+{
+  "crm": "yClients",
+  "common_sync_status": true,
+  "common_sync_rules": null,//общие правила по crm. если заданы, остальные игнорируются. далее игнорируются parentId,idCrm,syncRule
+  "domains": {
+    "sync_status": true,
+    "parent_id_mb": null,
+    "parent_id_crm": null,
+    "common_sync_rules": null,
+    "sync_objects": [
+      {
+        "id_mb": 123, //id объекта синхронизации MUSbooking
+        "id_crm": 345, //id объекта синхронизации crm с которой синхронимся
+        "sync_status": true,
+        "sync_rule": "all_out"
+      },
+      {
+        "id_mb": 678,
+        "id_crm": 432,
+        "sync_status": true,
+        "sync_rule": "all_out"
+      }
+    ]
+  },
+  "bases": {
+    "sync_status": true,
+    "parent_id_mb": 3211,
+    "parent_id_crm": 2311,
+    "common_sync_rules": "all_in",
+    "sync_objects": [
+      {
+        "id_crm": 345, //id объекта синхронизации crm с которой синхронимся
+        "id_mb": 123, //id объекта синхронизации MUSbooking
+        "sync_status": true,
+        "sync_rule": null
+      },
+      {
+        "id_mb": 678,
+        "id_crm": 432,
+        "sync_status": true,
+        "sync_rule": null
+      }
+    ]
+  },
+  "rooms": {
+    "sync_status": true,
+    "parent_id_mb": 3211,
+    "parent_id_crm": 2311,
+    "common_sync_rules": "all_in",
+    "sync_objects": [
+      {
+        "id_crm": 345, //id объекта синхронизации crm с которой синхронимся
+        "id_mb": 123, //id объекта синхронизации MUSbooking
+        "sync_status": true,
+        "sync_rule": null
+      },
+      {
+        "id_mb": 678,
+        "id_crm": 432,
+        "sync_status": true,
+        "sync_rule": null
+      }
+    ]
+  },
+  "calendars": {
+    "sync_status": true,
+    "parent_id_mb": 3211,
+    "parent_id_crm": 2311,
+    "common_sync_rules": "all_in",
+    "sync_objects": [
+      {
+        "id_crm": 345, //id объекта синхронизации crm с которой синхронимся
+        "id_mb": 123, //id объекта синхронизации MUSbooking
+        "sync_status": true,
+        "sync_rule": null
+      },
+      {
+        "id_mb": 678,
+        "id_crm": 432,
+        "sync_status": true,
+        "sync_rule": null
+      }
+    ]
+  },
+  "equipments": {
+    "sync_status": true,
+    "parent_id_mb": 3211,
+    "parent_id_crm": 2311,
+    "common_sync_rules": "all_in",
+    "sync_objects": [
+      {
+        "id_crm": 345, //id объекта синхронизации crm с которой синхронимся
+        "id_mb": 123, //id объекта синхронизации MUSbooking
+        "sync_status": true,
+        "sync_rule": null
+      },
+      {
+        "id_mb": 678,
+        "id_crm": 432,
+        "sync_status": true,
+        "sync_rule": null
+      }
+    ]
+  }
+}

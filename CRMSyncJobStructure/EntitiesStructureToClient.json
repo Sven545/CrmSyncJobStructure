@@ -1,0 +1,133 @@
+{
+  "crm": "yClients",
+  "domains": {
+    "mb": [
+      {
+        "id": "123",
+        "parent_id": "id",
+        "name": "Название партнерской зоны 1"
+      },
+      {
+        "id": "345",
+        "parent_id": "id",
+        "name": "Название партнерской зоны 2"
+      }
+    ],
+    "crm": [
+      {
+        "id": "22211",
+        "parent_id": "id",
+        "name": "Название сети YClients 1"
+      },
+      {
+        "id": "33321",
+        "parent_id": "id",
+        "name": "Название сети YClients 2"
+      }
+    ]
+  },
+  "bases": {
+    "mb": [
+      {
+        "id": "123",
+        "parent_id": "id",
+        "name": "Название базы 1"
+      },
+      {
+        "id": "345",
+        "parent_id": "id",
+        "name": "Название базы 2"
+      }
+    ],
+    "crm": [
+      {
+        "id": "22211",
+        "parent_id": "id",
+        "name": "Название филиала YClients 1"
+      },
+      {
+        "id": "33321",
+        "parent_id": "id",
+        "name": "Название филиала YClients 2"
+      }
+    ]
+  },
+  "rooms": {
+    "mb": [
+      {
+        "id": "123",
+        "parent_id": "id",
+        "name": "Название комнаты 1"
+      },
+      {
+        "id": "345",
+        "parent_id": "id",
+        "name": "Название комнаты 2"
+      }
+    ],
+    "crm": [
+      {
+        "id": "22211",
+        "parent_id": "id",
+        "name": "Название сотрудника YClients 1"
+      },
+      {
+        "id": "33321",
+        "parent_id": "id",
+        "name": "Название сотрудника YClients 2"
+      }
+    ]
+  },
+  "records": {
+    "mb": [
+      {
+        "id": "123",
+        "parent_id": "id",
+        "name": "Название записи 1"
+      },
+      {
+        "id": "345",
+        "parent_id": "id",
+        "name": "Название записи 2"
+      }
+    ],
+    "crm": [
+      {
+        "id": "22211",
+        "parent_id": "id",
+        "name": "Название записи YClients 1"
+      },
+      {
+        "id": "33321",
+        "parent_id": "id",
+        "name": "Название записи YClients 2"
+      }
+    ]
+  },
+  "equipments": {
+    "mb": [
+      {
+        "id": "123",
+        "parent_id": "id",
+        "name": "Название оборудования 1"
+      },
+      {
+        "id": "345",
+        "parent_id": "id",
+        "name": "Название оборудования 2"
+      }
+    ],
+    "crm": [
+      {
+        "id": "22211",
+        "parent_id": "id",
+        "name": "Название оборудования YClients 1"
+      },
+      {
+        "id": "33321",
+        "parent_id": "id",
+        "name": "Название оборудования YClients 2"
+      }
+    ]
+  }
+}

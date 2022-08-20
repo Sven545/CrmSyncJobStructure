@@ -8,19 +8,19 @@
     "net5.0": []
   },
   "packageFolders": {
-    "C:\\Users\\Manager\\.nuget\\packages\\": {}
+    "C:\\Users\\Aleksandr\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Manager\\source\\repos\\CRMSyncJobStructure\\CRMSyncJobStructure\\CRMSyncJobStructure.csproj",
+      "projectUniqueName": "C:\\Users\\Aleksandr\\Desktop\\Backend\\CrmSyncJob\\CrmSyncJobStructure\\CRMSyncJobStructure\\CRMSyncJobStructure.csproj",
       "projectName": "CRMSyncJobStructure",
-      "projectPath": "C:\\Users\\Manager\\source\\repos\\CRMSyncJobStructure\\CRMSyncJobStructure\\CRMSyncJobStructure.csproj",
-      "packagesPath": "C:\\Users\\Manager\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Manager\\source\\repos\\CRMSyncJobStructure\\CRMSyncJobStructure\\obj\\",
+      "projectPath": "C:\\Users\\Aleksandr\\Desktop\\Backend\\CrmSyncJob\\CrmSyncJobStructure\\CRMSyncJobStructure\\CRMSyncJobStructure.csproj",
+      "packagesPath": "C:\\Users\\Aleksandr\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Aleksandr\\Desktop\\Backend\\CrmSyncJob\\CrmSyncJobStructure\\CRMSyncJobStructure\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Manager\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Aleksandr\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

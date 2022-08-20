@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using CRMSyncJobStructure.Interfaces;
-using CRMSyncJobStructure.YClientsServices;
+using CRMSyncJobStructure.YClientsApiServices;
 
 namespace CRMSyncJobStructure.AuthServices
 {

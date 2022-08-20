@@ -1,15 +1,15 @@
 ﻿using System;
 using CRMSyncJobStructure.Jobs;
 using CRMSyncJobStructure.Interfaces;
-using CRMSyncJobStructure.Services;
+using CRMSyncJobStructure.SyncServices;
 using CRMSyncJobStructure.Providers;
 using CRMSyncJobStructure.SyncObjects;
-using CRMSyncJobStructure.YClientsServices;
-using CRMSyncJobStructure.YClientsEntities;
+using CRMSyncJobStructure.YClientsApiServices;
 using System.Linq;
 using CRMSyncJobStructure.ServiceFactories;
 using CRMSyncJobStructure.SyncModels;
 using System.Collections.Generic;
+using CRMSyncJobStructure.YClientsEntities.SimpleEntities;
 
 namespace CRMSyncJobStructure
 {
@@ -85,6 +85,18 @@ namespace CRMSyncJobStructure
             var service = yClientsFactory.GetSyncService(new List<SyncObjectsEnum>());
             service.Authorize();
             service.Synchronize();
+        }
+        /// <summary>
+        /// Метод отвечает за получение информации о структурах сущностей конуретного партнера 
+        /// у MB и сторонней CRM
+        /// </summary>
+        public GroupsEntitiesRelation GetEntitiesStructure()
+        {
+            var yClientsFactory = new SyncServiceYClientsFactory();//если синхронизируем YClients, или любую другую фабрику для другой CRM
+            var service = yClientsFactory.GetSyncService(new List<SyncObjectsEnum>());
+            service.Authorize();
+            var result = service.GetEntitiesRelations();
+            return result;
         }
     }
 }

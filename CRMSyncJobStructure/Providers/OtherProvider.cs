@@ -4,30 +4,28 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using CRMSyncJobStructure.Interfaces;
+using CRMSyncJobStructure.SyncModels;
 
 namespace CRMSyncJobStructure.Providers
 {
     public class OtherProvider : ISyncProvider
     {
-        public IEnumerable<ISyncObject> SyncEntitties { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        IList<ISyncObject> ISyncProvider.SyncObjects { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public ISyncAuthService AuthService => throw new NotImplementedException();
 
-        public void AddSyncObject(ISyncObject syncObject)
-        {
-            throw new NotImplementedException();
-        }
+        public IEnumerable<ISyncObject> SyncObjects { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public IEntitiesRelationService EntitiesRelationService { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 
         public void Authorize()
         {
             throw new NotImplementedException();
         }
 
-        public void RemoveSyncObject(ISyncObject syncObject)
+        public void DoSyncObjects()
         {
             throw new NotImplementedException();
         }
 
-        public void DoSyncObjects()
+        public GroupsEntitiesRelation GetEntitiesRelations()
         {
             throw new NotImplementedException();
         }

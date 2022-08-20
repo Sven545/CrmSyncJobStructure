@@ -1,11 +1,11 @@
-﻿using CRMSyncJobStructure.YClientsEntities;
+﻿using CRMSyncJobStructure.YClientsEntities.SimpleEntities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CRMSyncJobStructure.YClientsServices
+namespace CRMSyncJobStructure.YClientsApiServices
 {
     /// <summary>
     /// Общий сервис доступа к сущностям YClients

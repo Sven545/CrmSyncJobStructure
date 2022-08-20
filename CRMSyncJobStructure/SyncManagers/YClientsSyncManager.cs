@@ -25,7 +25,8 @@ namespace CRMSyncJobStructure.SyncManagers
         }
         /// <summary>
         /// Логика выбора объектов синхронизации
-        /// Если передавать сюда объект с боллее подробной 
+        /// Если передавать сюда объект с боллее подробной информацией, 
+        /// можно расширить выбор объектов и, соответственно, способов синхронизации
         /// </summary>        
         public IEnumerable<ISyncObject> GetSyncObjects(IEnumerable<SyncObjectsEnum> objectsForSync)
         {

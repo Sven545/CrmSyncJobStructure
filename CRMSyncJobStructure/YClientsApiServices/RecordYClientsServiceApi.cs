@@ -5,9 +5,10 @@ using System.Net;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
-using CRMSyncJobStructure.YClientsEntities;
+using CRMSyncJobStructure.YClientsEntities.Responses;
+using CRMSyncJobStructure.YClientsEntities.SimpleEntities;
 
-namespace CRMSyncJobStructure.YClientsServices
+namespace CRMSyncJobStructure.YClientsApiServices
 {
     /// <summary>
     /// Сервис для работы с сущностью "Запись" YClients API
