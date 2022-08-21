@@ -24,7 +24,7 @@ namespace CRMSyncJobStructure
             var service = yClientsFactory.GetSyncService(new List<SyncObjectsEnum>());
             SyncJob job = new SyncJob(service);
 
-            job.RunAsync();
+            // job.RunAsync();
 
             AuthorizationYClientsServiceApi authService = new AuthorizationYClientsServiceApi(partnerToken);
             try
@@ -37,9 +37,23 @@ namespace CRMSyncJobStructure
                 Console.WriteLine(ex.Message);
 
             }
-            RecordYClientsServiceApi recordsService = new RecordYClientsServiceApi(partnerToken, user.Token);
-            //var records = recordsService.GetRecords(668467);
-            //var firstRecord = recordsService.GetOneRecord(668467, (int)records.FirstOrDefault().Id);
+            StaffYClientsServiceApi staffService = new StaffYClientsServiceApi(partnerToken, user.Token);
+            StaffYClients staff = new StaffYClients()
+            {
+                CompanyId = 668467,
+                Information = "test staff",
+                Name = "Код сотрудник",
+                Specialization = "Тестировщик"
+            };
+
+            var resStaff = staffService.AddStaff(staff);
+            resStaff = staffService.GetOneStaff(staff.CompanyId, resStaff.Id);
+            resStaff.Name = "Changed Name";
+            var newResStaff = staffService.ChangeStaff(resStaff);
+            staffService.RemoveStaff(staff.CompanyId, resStaff.Id);
+            /*
+            
+            
             RecordYClients newRecord = new RecordYClients()
             {
                 StaffId = 1909274,
@@ -62,7 +76,7 @@ namespace CRMSyncJobStructure
             {
                 Console.WriteLine(ex.Message);
             }
-
+            */
         }
     }
     /// <summary>
@@ -70,7 +84,7 @@ namespace CRMSyncJobStructure
     /// </summary>
     public class SyncController
     {
-        public void Sync(object someSyncParameters)
+        public void Sync(object SyncSettingsFromClient)
         {
             //На основе параметров, по которым хотим синхронизироваться
             //полученных от клиента применяем тот или иной сервис синхронизации
