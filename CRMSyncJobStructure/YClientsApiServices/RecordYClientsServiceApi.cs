@@ -118,7 +118,7 @@ namespace CRMSyncJobStructure.YClientsApiServices
             return response.Data;
         }
 
-        public IEnumerable<RecordYClients> GetRecords(int companyId, int? staffId = null)
+        public IEnumerable<RecordYClients> GetRecords(string companyId, string? staffId = null)
         {
             var url = $"https://api.yclients.com/api/v1/records/{companyId}";
 

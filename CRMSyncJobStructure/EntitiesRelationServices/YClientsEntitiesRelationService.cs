@@ -27,7 +27,7 @@ namespace CRMSyncJobStructure.EntitiesRelationServices
         public GroupsEntitiesRelation GetGroupsEntitiesRelation()
         {
 
-            var records = RecordService.GetRecords(668467);
+            var records = RecordService.GetRecords("668467");
             throw new NotImplementedException();
         }
     }

@@ -13,8 +13,8 @@ namespace CRMSyncJobStructure.SyncObjects
     /// </summary>
     public class CalendarYClienstSyncObject : ISyncObject
     {
-        private int _yClientsStaffId;
-        private int _yClientsCompanyId;
+        private string _yClientsStaffId;
+        private string _yClientsCompanyId;
         private string _musBookingRoomId;
         public RecordYClientsServiceApi RecordService { get; set; }
         public StaffYClientsServiceApi StaffService { get; set; }
@@ -25,7 +25,7 @@ namespace CRMSyncJobStructure.SyncObjects
         /// <summary>
         /// Должны знать id комнаты у нас, в которую копируем записи YClients, а так же id компании и сотрудника YClients, от которого происходит копирование
         /// </summary>    
-        public CalendarYClienstSyncObject(string musBookingRoomId,int yClientsCompanyId,int yClientsStaffId)
+        public CalendarYClienstSyncObject(string musBookingRoomId,string yClientsCompanyId,string yClientsStaffId)
         {
             _musBookingRoomId = musBookingRoomId;
             _yClientsStaffId = yClientsStaffId;

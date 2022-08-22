@@ -15,8 +15,8 @@ namespace CRMSyncJobStructure.Factories.ServiceFactories
 {
     public class SyncServiceYClientsFactory : SyncServiceFactory
     {
-        private IEnumerable<ManagerParameters> _managerParameters;
-        public SyncServiceYClientsFactory(IEnumerable<ManagerParameters> managerParameters)
+        private IEnumerable<ISyncManagerParameters> _managerParameters;
+        public SyncServiceYClientsFactory(IEnumerable<ISyncManagerParameters> managerParameters)
         {
             _managerParameters = managerParameters;
             //SyncObjects = syncObjects;

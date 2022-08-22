@@ -14,7 +14,7 @@ namespace CRMSyncJobStructure.Abstracts
     {
         public abstract ISyncService GetSyncService(/*IEnumerable<SyncModels.SyncObjects> objectsForSync*/);
         /// <summary>
-        /// Фабричный метод для получения нужного экземпляра фабрики
+        /// Фабричный метод для получения нужного настроенного экземпляра фабрики
         /// </summary>
         public static SyncServiceFactory GetSyncServiceFactory(SyncConfig config)
         {
@@ -34,9 +34,9 @@ namespace CRMSyncJobStructure.Abstracts
         /// </summary>
         /// <param name="config"></param>
         /// <returns></returns>
-        private static IEnumerable<ManagerParameters> GetManagerParameters(SyncConfig config)
+        private static IEnumerable<ISyncManagerParameters> GetManagerParameters(SyncConfig config)
         {
-            List<ManagerParameters> parameters = new List<ManagerParameters>();
+            List<ISyncManagerParameters> parameters = new List<ISyncManagerParameters>();
             /*
             if (config.Domains.SyncStatus)
             {
@@ -59,7 +59,12 @@ namespace CRMSyncJobStructure.Abstracts
             if (config.Calendars.SyncStatus)
             {
                 var syncRule = config.SyncRule ?? config.Calendars.CommonSyncRule;
-                parameters.Add(new ManagerParameters() { SyncObject = SyncModels.SyncObjects.Calendar, SyncRule = syncRule });
+                parameters.Add(new ManagerYClientsParameters()
+                {
+                    CompanyId = config.Rooms.ParentIdCrm,
+                    SyncObjectType = SyncModels.SyncObjects.Calendar,
+                    SyncObjectCongiguration = config.Calendars
+                });
             }
             return parameters;
         }

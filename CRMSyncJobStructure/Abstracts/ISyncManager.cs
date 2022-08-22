@@ -12,9 +12,11 @@ namespace CRMSyncJobStructure.Abstracts
     /// </summary>
     public interface ISyncManager
     {
+        public IEnumerable<ISyncManagerParameters> SyncParameters { get; }
         /// <summary>
         /// На уровне сервиса формируем список объектов для синхронизации(комната, календарь, оборудование)
         /// </summary>   
         public IEnumerable<ISyncObject> GetSyncObjects();
+
     }
 }

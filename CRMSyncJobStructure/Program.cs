@@ -21,23 +21,30 @@ namespace CRMSyncJobStructure
         private static UserYClients user;
         static void Main(string[] args)
         {
-            SyncConfig config= new SyncConfig()
+            SyncConfig config = new SyncConfig()
             {
-                Crm=CrmSystems.YClients,
-                SyncStatus=true,
-                SyncRule=SyncRules.AllIn,
-                Calendars=new CommonSyncObjectConfiguration()
+                Crm = CrmSystems.YClients,
+                SyncStatus = true,
+                SyncRule = SyncRules.AllIn,
+                Calendars = new CommonSyncObjectConfiguration()
                 {
-                    SyncStatus=true
+                    SyncStatus = true,
+                    ParentIdMusBooking="roomIdMb",
+                    ParentIdCrm="staffIdYClients"
+                },
+                Rooms = new CommonSyncObjectConfiguration()
+                {
+                    SyncStatus = false,
+                    ParentIdCrm = "testCompanyId",
+                    
                 }
+                
                 
             };
             var factory = SyncServiceFactory.GetSyncServiceFactory(config);
             var service = factory.GetSyncService();
             // service.Synchronize();
-            var recordsService = new RecordYClientsServiceApi("f3fyrwtb4npu9wrt53nx", "57961160e1cb93f3bb108bf5183b3ede");
-            var recordsCompany = recordsService.GetRecords(668467);
-            var recordsStaff = recordsService.GetRecords(668467, 1909274);
+           
 
             /*
             var yClientsFactory = new SyncServiceYClientsFactory();
