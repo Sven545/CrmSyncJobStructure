@@ -1,15 +1,17 @@
 ﻿using System;
 using CRMSyncJobStructure.Jobs;
-using CRMSyncJobStructure.Interfaces;
+using CRMSyncJobStructure.Abstracts;
 using CRMSyncJobStructure.SyncServices;
 using CRMSyncJobStructure.Providers;
 using CRMSyncJobStructure.SyncObjects;
 using CRMSyncJobStructure.YClientsApiServices;
 using System.Linq;
-using CRMSyncJobStructure.ServiceFactories;
-using CRMSyncJobStructure.SyncModels;
+using CRMSyncJobStructure.Factories.ServiceFactories;
 using System.Collections.Generic;
 using CRMSyncJobStructure.YClientsEntities.SimpleEntities;
+using CRMSyncJobStructure.SyncModels.EntitiesRelations;
+using CRMSyncJobStructure.SyncModels.SyncConfiguration;
+using CRMSyncJobStructure.SyncModels;
 
 namespace CRMSyncJobStructure
 {
@@ -19,13 +21,31 @@ namespace CRMSyncJobStructure
         private static UserYClients user;
         static void Main(string[] args)
         {
+            SyncConfig config= new SyncConfig()
+            {
+                Crm=CrmSystems.YClients,
+                SyncStatus=true,
+                SyncRule=SyncRules.AllIn,
+                Calendars=new CommonSyncObjectConfiguration()
+                {
+                    SyncStatus=true
+                }
+                
+            };
+            var factory = SyncServiceFactory.GetSyncServiceFactory(config);
+            var service = factory.GetSyncService();
+            // service.Synchronize();
+            var recordsService = new RecordYClientsServiceApi("f3fyrwtb4npu9wrt53nx", "57961160e1cb93f3bb108bf5183b3ede");
+            var recordsCompany = recordsService.GetRecords(668467);
+            var recordsStaff = recordsService.GetRecords(668467, 1909274);
 
-            ISyncServiceAbstractFactory yClientsFactory = new SyncServiceYClientsFactory();
-            var service = yClientsFactory.GetSyncService(new List<SyncObjectsEnum>());
+            /*
+            var yClientsFactory = new SyncServiceYClientsFactory();
+            var service = yClientsFactory.GetSyncService(new List<SyncModels.SyncObjects>());
             SyncJob job = new SyncJob(service);
-
+            */
             // job.RunAsync();
-
+            /*
             AuthorizationYClientsServiceApi authService = new AuthorizationYClientsServiceApi(partnerToken);
             try
             {
@@ -45,12 +65,13 @@ namespace CRMSyncJobStructure
                 Name = "Код сотрудник",
                 Specialization = "Тестировщик"
             };
-
+            
             var resStaff = staffService.AddStaff(staff);
             resStaff = staffService.GetOneStaff(staff.CompanyId, resStaff.Id);
             resStaff.Name = "Changed Name";
             var newResStaff = staffService.ChangeStaff(resStaff);
             staffService.RemoveStaff(staff.CompanyId, resStaff.Id);
+            */
             /*
             
             
@@ -95,22 +116,27 @@ namespace CRMSyncJobStructure
             //Где то здесь мы должны получить:
             // -параметры для авторизации конкретного пользователя
             // -список объектов, которые нужно синхронизировать(записываем в базу для робота и используем здесь)
+            /*
             var yClientsFactory = new SyncServiceYClientsFactory();
-            var service = yClientsFactory.GetSyncService(new List<SyncObjectsEnum>());
+            var service = yClientsFactory.GetSyncService(new List<SyncModels.SyncObjects>());
             service.Authorize();
             service.Synchronize();
+            */
         }
         /// <summary>
         /// Метод отвечает за получение информации о структурах сущностей конуретного партнера 
         /// у MB и сторонней CRM
         /// </summary>
+        /*
         public GroupsEntitiesRelation GetEntitiesStructure()
         {
+            
             var yClientsFactory = new SyncServiceYClientsFactory();//если синхронизируем YClients, или любую другую фабрику для другой CRM
-            var service = yClientsFactory.GetSyncService(new List<SyncObjectsEnum>());
+            var service = yClientsFactory.GetSyncService(new List<SyncModels.SyncObjects>());
             service.Authorize();
             var result = service.GetEntitiesRelations();
             return result;
-        }
+            
+        }*/
     }
 }

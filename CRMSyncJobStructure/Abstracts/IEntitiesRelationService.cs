@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using CRMSyncJobStructure.SyncModels;
+using CRMSyncJobStructure.SyncModels.EntitiesRelations;
 
-namespace CRMSyncJobStructure.Interfaces
+namespace CRMSyncJobStructure.Abstracts
 {
     public interface IEntitiesRelationService
     {

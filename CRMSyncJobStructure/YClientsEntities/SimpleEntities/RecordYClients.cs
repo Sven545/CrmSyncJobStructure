@@ -1,4 +1,4 @@
-﻿using CRMSyncJobStructure.Interfaces;
+﻿using CRMSyncJobStructure.Abstracts;
 using System;
 using System.Collections.Generic;
 using System.Linq;

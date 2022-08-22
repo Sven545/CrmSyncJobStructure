@@ -3,26 +3,36 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using CRMSyncJobStructure.Interfaces;
+using CRMSyncJobStructure.Abstracts;
 using CRMSyncJobStructure.YClientsApiServices;
 
 namespace CRMSyncJobStructure.SyncObjects
 {
     /// <summary>
-    /// Объект синхронизации "Календарь", которые знает конкретный способ и правила синхронизации(all_in,all_out,double, любое другое правило)
+    /// Объект синхронизации "Календарь", которые знает конкретный способ синхронизации. AllIn
     /// </summary>
     public class CalendarYClienstSyncObject : ISyncObject
     {
-       // public CommonYClientsService YClientsService { get; set; }
+        private int _yClientsStaffId;
+        private int _yClientsCompanyId;
+        private string _musBookingRoomId;
         public RecordYClientsServiceApi RecordService { get; set; }
+        public StaffYClientsServiceApi StaffService { get; set; }
         public object DataBase { get; set; }
         //На этапе привязки сохраняем в БД в таблицу партнерских зон параметры,
         //по которым будет связь с внешними CRM
-        public CalendarYClienstSyncObject()
+
+        /// <summary>
+        /// Должны знать id комнаты у нас, в которую копируем записи YClients, а так же id компании и сотрудника YClients, от которого происходит копирование
+        /// </summary>    
+        public CalendarYClienstSyncObject(string musBookingRoomId,int yClientsCompanyId,int yClientsStaffId)
         {
-            // YClientsService = new CommonYClientsService(userLogin, userPassword, partnerToken);
-            //userToken и partnerToken получаем из БД(записали на этапе авторизации) и из конфига
-            RecordService = new RecordYClientsServiceApi("","");
+            _musBookingRoomId = musBookingRoomId;
+            _yClientsStaffId = yClientsStaffId;
+            _yClientsCompanyId=yClientsCompanyId;
+
+            RecordService = new RecordYClientsServiceApi("f3fyrwtb4npu9wrt53nx", "57961160e1cb93f3bb108bf5183b3ede");
+            StaffService = new StaffYClientsServiceApi("f3fyrwtb4npu9wrt53nx", "57961160e1cb93f3bb108bf5183b3ede");
         }
         /// <summary>
         /// В параметры данного метода возможно передавать параметры синхронизации, 
@@ -42,7 +52,8 @@ namespace CRMSyncJobStructure.SyncObjects
             //Должны знать:
             //-companyId
             //-staffId
-            RecordService.GetRecords(companyId: 123);
+           
+            var res = RecordService.GetRecords(companyId: _yClientsCompanyId,staffId: _yClientsStaffId);
 
 
             //логика синхронизации: сохраняем эти заказы у нас и
@@ -56,9 +67,9 @@ namespace CRMSyncJobStructure.SyncObjects
 
             //Либо сам этот класс будет динамически выбираться на этапе формирования списка ISyncObjects
             //в зависимости от выбранного способа синхронизации (CalendarYClienstSyncObjectAllIn,CalendarYClienstSyncObjectAllOut,CalendarYClienstSyncObjectDouble)
-            
 
-            throw new NotImplementedException();
+
+           
         }
 
 

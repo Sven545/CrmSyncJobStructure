@@ -6,10 +6,9 @@ using System.Threading.Tasks;
 
 namespace CRMSyncJobStructure.SyncModels
 {
-    public class SyncEntity
+    public class ManagerParameters
     {
-        public string Id { get; set; }
-        public string ParentId { get; set; }
-        public string Name { get; set; }
+        public SyncObjects SyncObject { get; set; }
+        public SyncRules SyncRule { get; set; }
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CRMSyncJobStructure.SyncModels
 {
-    public enum SyncObjectsEnum
+    public enum SyncObjects
     {
         Domain,
         Base,

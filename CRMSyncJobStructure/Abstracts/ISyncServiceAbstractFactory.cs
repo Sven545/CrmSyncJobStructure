@@ -5,10 +5,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CRMSyncJobStructure.Interfaces
+namespace CRMSyncJobStructure.Abstracts
 {
     public interface ISyncServiceAbstractFactory
     {
-        public ISyncService GetSyncService(IEnumerable<SyncObjectsEnum> objectsForSync);
+        public ISyncService GetSyncService(IEnumerable<SyncModels.SyncObjects> objectsForSync);
     }
 }

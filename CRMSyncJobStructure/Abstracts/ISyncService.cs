@@ -1,11 +1,11 @@
-﻿using CRMSyncJobStructure.SyncModels;
+﻿using CRMSyncJobStructure.SyncModels.EntitiesRelations;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CRMSyncJobStructure.Interfaces
+namespace CRMSyncJobStructure.Abstracts
 {
     /// <summary>
     /// Абстрактный сервис синхронизации, который может работать с любым провайдером

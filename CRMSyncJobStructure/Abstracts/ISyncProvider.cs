@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using CRMSyncJobStructure.EntitiesRelationServices;
-using CRMSyncJobStructure.SyncModels;
+using CRMSyncJobStructure.SyncModels.EntitiesRelations;
 
-namespace CRMSyncJobStructure.Interfaces
+namespace CRMSyncJobStructure.Abstracts
 {
     /// <summary>
     /// Абстрактный провайдер, в который можно динамически добавлять сущности синхронизации

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using CRMSyncJobStructure.Interfaces;
+using CRMSyncJobStructure.Abstracts;
 using CRMSyncJobStructure.SyncObjects;
 using CRMSyncJobStructure.SyncModels;
 
@@ -14,26 +14,34 @@ namespace CRMSyncJobStructure.SyncManagers
     /// </summary>
     public class YClientsSyncManager : ISyncManager
     {
-        private IEnumerable<SyncObjectsEnum> ObjectsForSync { get; }
+        private IEnumerable<ManagerParameters> SyncParameters { get; }
         /// <summary>
         /// В конструкторе передаем объект, на основании которого будет сформирован список объектов синхронизации
         /// Возможно при болле глубокой логике синхронизации заменим на отдельный класс с параметрами
         /// </summary>       
-        public YClientsSyncManager()
+        public YClientsSyncManager(IEnumerable<ManagerParameters> parameters)
         {
-           // ObjectsForSync = objectsForSync;
+            SyncParameters = parameters;
         }
         /// <summary>
         /// Логика выбора объектов синхронизации
-        /// Если передавать сюда объект с боллее подробной информацией, 
-        /// можно расширить выбор объектов и, соответственно, способов синхронизации
+        /// Пока игнорируем правила SyncRules
         /// </summary>        
-        public IEnumerable<ISyncObject> GetSyncObjects(IEnumerable<SyncObjectsEnum> objectsForSync)
+        public IEnumerable<ISyncObject> GetSyncObjects()
         {
 
             List<ISyncObject> syncObjects = new List<ISyncObject>();
-            syncObjects.Add(new CalendarYClienstSyncObject());
-            syncObjects.Add(new EquipmentYClienstSyncObject());
+            foreach(var parameter in SyncParameters)
+            {
+                if(parameter.SyncObject==SyncModels.SyncObjects.Calendar)
+                {
+                    syncObjects.Add(new CalendarYClienstSyncObject("",0,1));
+                }
+                if(parameter.SyncObject == SyncModels.SyncObjects.Equipment)
+                {
+                    syncObjects.Add(new EquipmentYClienstSyncObject());
+                }
+            }
             return syncObjects;
         }
        

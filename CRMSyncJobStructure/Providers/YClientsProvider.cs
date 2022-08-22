@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using CRMSyncJobStructure.Interfaces;
-using CRMSyncJobStructure.SyncModels;
+using CRMSyncJobStructure.Abstracts;
+using CRMSyncJobStructure.SyncModels.EntitiesRelations;
 using CRMSyncJobStructure.YClientsApiServices;
 
 namespace CRMSyncJobStructure.Providers

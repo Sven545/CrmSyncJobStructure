@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "jGUBxSVqDIdCVUCfukwiNlcKzgMq5ogp69h6Tg1q5ph8jo59h9dBb/qG8HJFu4yIaVNpP4AQzr9Eq9GJ2SFiXw==",
+  "dgSpecHash": "E+pwq3wVERtveDNKxaodmAw8qOJrXBe4zxJfvh9NUT7YRjPbVQYQUFzfo2jVybuNSJJoOn5DnsqDwNazLDOwWQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Aleksandr\\Desktop\\Backend\\CrmSyncJob\\CrmSyncJobStructure\\CRMSyncJobStructure\\CRMSyncJobStructure.csproj",
+  "projectFilePath": "C:\\Users\\Manager\\Desktop\\Projects\\CrmSyncJobStructure\\CRMSyncJobStructure\\CRMSyncJobStructure.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

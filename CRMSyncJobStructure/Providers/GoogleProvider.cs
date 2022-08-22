@@ -1,5 +1,5 @@
-﻿using CRMSyncJobStructure.Interfaces;
-using CRMSyncJobStructure.SyncModels;
+﻿using CRMSyncJobStructure.Abstracts;
+using CRMSyncJobStructure.SyncModels.EntitiesRelations;
 using System;
 using System.Collections.Generic;
 using System.Linq;

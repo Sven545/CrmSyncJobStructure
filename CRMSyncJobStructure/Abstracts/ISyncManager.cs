@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using CRMSyncJobStructure.SyncModels;
 
-namespace CRMSyncJobStructure.Interfaces
+namespace CRMSyncJobStructure.Abstracts
 {
     /// <summary>
     /// Отвечает за формирование объектов синхронизации
@@ -15,6 +15,6 @@ namespace CRMSyncJobStructure.Interfaces
         /// <summary>
         /// На уровне сервиса формируем список объектов для синхронизации(комната, календарь, оборудование)
         /// </summary>   
-        public IEnumerable<ISyncObject> GetSyncObjects(IEnumerable<SyncObjectsEnum> objectsForSync);
+        public IEnumerable<ISyncObject> GetSyncObjects();
     }
 }

@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>CRMSyncJobStructure</id>
+    <version>1.0.0</version>
+    <authors>CRMSyncJobStructure</authors>
+    <description>Package Description</description>
+    <dependencies>
+      <group targetFramework="net5.0" />
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="C:\Users\Manager\Desktop\Projects\CrmSyncJobStructure\CRMSyncJobStructure\bin\Debug\net5.0\CRMSyncJobStructure.runtimeconfig.json" target="lib\net5.0\CRMSyncJobStructure.runtimeconfig.json" />
+    <file src="C:\Users\Manager\Desktop\Projects\CrmSyncJobStructure\CRMSyncJobStructure\bin\Debug\net5.0\CRMSyncJobStructure.dll" target="lib\net5.0\CRMSyncJobStructure.dll" />
+  </files>
+</package>

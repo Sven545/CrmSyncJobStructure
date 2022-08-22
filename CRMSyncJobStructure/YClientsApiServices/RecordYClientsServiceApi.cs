@@ -118,7 +118,7 @@ namespace CRMSyncJobStructure.YClientsApiServices
             return response.Data;
         }
 
-        public IEnumerable<RecordYClients> GetRecords(int companyId)
+        public IEnumerable<RecordYClients> GetRecords(int companyId, int? staffId = null)
         {
             var url = $"https://api.yclients.com/api/v1/records/{companyId}";
 
@@ -126,6 +126,10 @@ namespace CRMSyncJobStructure.YClientsApiServices
             client.Headers[HttpRequestHeader.Authorization] = $"Bearer {_partnerToken}, User {_userToken}";
             client.Headers[HttpRequestHeader.Accept] = "application/vnd.yclients.v2+json";
             client.Headers[HttpRequestHeader.ContentType] = "application/json";
+            if (staffId != null)
+            {
+                client.QueryString.Add("staff_id", staffId.ToString());
+            }
             string result = client.DownloadString(url);
 
             JsonSerializerOptions options = new JsonSerializerOptions()

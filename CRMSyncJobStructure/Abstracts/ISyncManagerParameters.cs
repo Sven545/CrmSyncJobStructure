@@ -4,11 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CRMSyncJobStructure.Interfaces
+namespace CRMSyncJobStructure.Abstracts
 {
-    public interface ISyncAuthService
+    public interface ISyncManagerParameters
     {
-        public void Authorize();
-        
     }
 }
